@@ -12,7 +12,7 @@ const App = () => {
 
   useEffect(() => {
     const getData = async () => {
-      const response = await axios.get('http://localhost:3001/names')
+      const response = await axios.get('http://localhost:3001/api/names')
       setNames(response.data)
     }
     getData()
