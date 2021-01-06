@@ -1,25 +1,63 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState, useEffect } from 'react'
+import axios from 'axios'
+import Menu from './components/Menu'
+import NameTable from './components/NameTable'
+import NumberAvatar from './components/NumberAvatar'
 
-function App() {
+import { Switch, Route } from 'react-router-dom'
+
+const App = () => {
+  const [names, setNames] = useState([])
+  const [checkName, setCheckName] = useState('')
+
+  useEffect(() => {
+    const getData = async () => {
+      const response = await axios.get('http://localhost:3001/names')
+      setNames(response.data)
+    }
+    getData()
+  }, [])
+
+  const namesToShow = names.filter((n) =>
+    n.name.toLowerCase().includes(checkName.toLowerCase())
+  )
+
+  const sortedNamesByAmount = [...namesToShow].sort(
+    (a, b) => b.amount - a.amount
+  )
+
+  const sortedNamesByNames = [...namesToShow].sort((a, b) =>
+    a.name.localeCompare(b.name)
+  )
+
+  const sum = (items, prop) => {
+    return items.reduce((a, b) => {
+      return a + b[prop]
+    }, 0)
+  }
+
+  const total = sum(names, 'amount')
+
+  const handleCheckChange = (event) => {
+    setCheckName(event.target.value)
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <Menu checkName={checkName} checkChange={handleCheckChange} />
+      <Switch>
+        <Route path="/total">
+          <NumberAvatar total={total} />
+        </Route>
+        <Route path="/byname">
+          <NameTable names={sortedNamesByNames} sortedBy={'name'} />
+        </Route>
+        <Route path="/">
+          <NameTable names={sortedNamesByAmount} sortedBy={'amount'} />
+        </Route>
+      </Switch>
     </div>
-  );
+  )
 }
 
-export default App;
+export default App
