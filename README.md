@@ -7,3 +7,5 @@
 `npm install`
 
 `npm start`
+
+Please check https://github.com/toukolonka/Name-App-Backend.git to run the whole application.
