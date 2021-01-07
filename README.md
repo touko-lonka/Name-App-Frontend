@@ -12,8 +12,8 @@ Please check https://github.com/toukolonka/Name-App-Backend.git to run the whole
 
 Application contains three different routes:
 
-/         Names ordered by amount
+/ -------- Names ordered by amount
 
-/byname   Names ordered in alphabetical order
+/byname -- Names ordered in alphabetical order
 
-/total    Total number of names
+/total --- Total number of names
