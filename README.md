@@ -8,8 +8,6 @@
 
 `npm start`
 
-Application runs in `localhost:3001`
-
 Please check https://github.com/toukolonka/Name-App-Backend.git to run the whole application.
 
 # Info
