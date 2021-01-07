@@ -17,3 +17,5 @@ Application contains three different routes:
 `/byname` - Names ordered in alphabetical order
 
 `/total` - Total number of names
+
+You can filter names by writing into the input box on the top right corner.
