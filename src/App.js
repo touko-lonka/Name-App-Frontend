@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
-import Menu from './components/Menu'
+import MenuBar from './components/MenuBar'
 import NameTable from './components/NameTable'
 import NumberAvatar from './components/NumberAvatar'
 
@@ -44,7 +44,7 @@ const App = () => {
 
   return (
     <div>
-      <Menu checkName={checkName} checkChange={handleCheckChange} />
+      <MenuBar checkName={checkName} checkChange={handleCheckChange} />
       <Switch>
         <Route path="/total">
           <NumberAvatar total={total} />

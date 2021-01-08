@@ -14,7 +14,7 @@ const NumberAvatar = ({ total }) => {
         alignItems="center"
         justifyContent="center"
       >
-        <CircularProgress size={400} />
+        <CircularProgress size={300} />
       </Box>
       <Box
         top={300}
